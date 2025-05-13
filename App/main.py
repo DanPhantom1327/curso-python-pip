@@ -3,6 +3,7 @@
 import utils
 import read_csv
 import graficas
+import pandas as pd 
 
 #Ejemplo ejecucion de ejemplo con diccionario
 '''
@@ -27,6 +28,7 @@ data = [
 '''
 
 def Run(): #modulizamos para que al ser ejecutado desde otro .py me envie solo lo solicitado
+    '''
     #podemos ejecutarlo una vez llamado
     data = read_csv.read_csv('data.csv') #Llamamos el modulo con su funcion de lectura y su ubicacion para leer
     data = list(filter(lambda item:item['Continent']== 'South America',data))
@@ -35,7 +37,18 @@ def Run(): #modulizamos para que al ser ejecutado desde otro .py me envie solo l
     countries = list(map(lambda x: x['Country/Territory'], data)) #Para obtener todos los paises usando MAP para columna
     percentages = list(map(lambda x: x['World Population Percentage'],data)) #Para obtener todos los % usando MAP para columna
     graficas.generacion_grafica_torta(countries, percentages)
-    
+    '''
+
+    #USAMOS PANDAS PARA GENERAR GRAFICOS
+    df = pd.read_csv('data.csv')
+    df = df[df['Continent']=='South America'] 
+
+    countries = df['Country/Territory'].values
+    percentages = df['World Population Percentage'].values
+
+    graficas.generacion_grafica_torta(countries, percentages)
+
+    data = read_csv.read_csv('data.csv') #Llamamos el modulo con su funcion de lectura y su ubicacion para leer
     country = input('Type Country: ') #Vamos a solicitarlo de manera dinamica al user
     print(country)
 

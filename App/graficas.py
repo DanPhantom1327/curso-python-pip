@@ -40,7 +40,7 @@ def generacion_grafica_torta(labels,valores):
     fig, ax = plt.subplots() #fig = figura, ax = coordenadas graficacion
     ax.pie(valores, labels=labels) #generaremos un grafica de torta = pie
     ax.axis('equal')
-    plt.savefig('pie2.png')
+    plt.savefig('pie.png')
     plt.close()
 
 
