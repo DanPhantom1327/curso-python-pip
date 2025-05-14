@@ -1,0 +1,8 @@
+#Codigo para correr el contenedor 
+services: #Definimos servicio
+    app-csv: #nombre del servicio
+        build:  
+            context: .
+            dockerfile: DockerFile
+        volumes:
+            - .:/app #para que nuestros archivos se enlace de manera automatica

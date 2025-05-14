@@ -1,0 +1,17 @@
+#desde que version de python parte
+FROM python:3.13 
+
+#creamos carpeta de trabajo
+WORKDIR /App
+
+#Copiamos lo que llevaremos, izquierda mi archivo local, derecho al docker
+COPY requirements.txt /App/requirements.txt
+
+#dejamos listas las dependencias y que aplique cache y que si existe ultima actualización la haga
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+#realizamos el copy final con todo nuestro codigo  . --> ubicacion en carpeta y llevarlo todo a la carpeta App
+COPY . /App
+
+#comando para ejecucion constante del contenedor
+CMD bash -c "while true; do sleep 1; done"
