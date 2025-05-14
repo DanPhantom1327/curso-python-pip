@@ -1,0 +1,10 @@
+#Codigo para correr el contenedor 
+services: #Definimos servicio
+    web-server: #nombre del servicio
+        build:  
+            context: .
+            dockerfile: DockerFile
+        volumes:
+            - .:/app #para que nuestros archivos se enlace de manera automatica
+        ports: #conectamos puerto de la maquina con el del contenedor
+            - '80:80'
